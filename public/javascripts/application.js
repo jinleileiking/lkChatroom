@@ -28,6 +28,7 @@ function updateMessages(){
         eval(str);
         var toAdd = "";
 
+        alert(str);
 
         for(var i = 0; i < ret.length; i++)
         {
