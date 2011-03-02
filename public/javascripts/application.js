@@ -20,45 +20,45 @@ function updateMessages(){
   id_thistime = 1; //这次的最后一个ID
   $.ajax({
       type : "GET",
-      url : "http://localhost:3000/messages.json",
+      url : "http://chatroom.heroku.com/messages.json",
       dataType : "json",
       complete : function(data){
-        str = "var ret = " + data.responseText; 
-        //str = "var ret = " + data.responseText + ";"; 
-        //eval(str);
-        //var toAdd = "";
+        //str = "var ret = " + data.responseText; 
+        str = "var ret = " + data.responseText + ";"; 
+        eval(str);
+        var toAdd = "";
 
 
-        //for(var i = 0; i < ret.length; i++)
-        //{
-          //if (i == ret.length -1) //最后一句话
-          //{
-            //id_thistime = ret[i]._id.$oid; 
-          //}
-        //}
+        for(var i = 0; i < ret.length; i++)
+        {
+          if (i == ret.length -1) //最后一句话
+          {
+            id_thistime = ret[i]._id.$oid; 
+          }
+        }
 
   
-        //if (id_thistime != lastid) //最后一句话变了
-        //{
-          ////得到目前昵称
-          //var current_nickname = $('form').html();
-          ////alert(current_nickname);
+        if (id_thistime != lastid) //最后一句话变了
+        {
+          //得到目前昵称
+          var current_nickname = $('form').html();
+          //alert(current_nickname);
 
-          //$("#messages").empty();
-          //for(var i = 0; i < ret.length; i++)
-          //{
-            //time = ret[i].created.match(/\d+:\d+:\d+/);
-            //toAdd = "<span class = 'time'>" + "[" + time + "]" + "</span>"+ "<b>" + ret[i].user + "</b>" + ":" + safe(ret[i].content) + "<br/>"; 
-            //$("#messages").append(toAdd);
-          //}
+          $("#messages").empty();
+          for(var i = 0; i < ret.length; i++)
+          {
+            time = ret[i].created.match(/\d+:\d+:\d+/);
+            toAdd = "<span class = 'time'>" + "[" + time + "]" + "</span>"+ "<b>" + ret[i].user + "</b>" + ":" + safe(ret[i].content) + "<br/>"; 
+            $("#messages").append(toAdd);
+          }
 
 
-          //lastid = id_thistime;
-          //$('.scroll-pane').jScrollPane();
-          //var pane = $('.scroll-pane');
-          //var api = pane.data('jsp');
-          //api.scrollToBottom();
-        //}
+          lastid = id_thistime;
+          $('.scroll-pane').jScrollPane();
+          var pane = $('.scroll-pane');
+          var api = pane.data('jsp');
+          api.scrollToBottom();
+        }
       }
     });
 
