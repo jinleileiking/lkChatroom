@@ -23,7 +23,8 @@ function updateMessages(){
       url : "http://localhost:3000/messages.json",
       dataType : "json",
       complete : function(data){
-        str = "var ret = " + data.responseText + ";"; 
+        str = "var ret = " + data.responseText; 
+        //str = "var ret = " + data.responseText + ";"; 
         eval(str)
         var toAdd = "";
 
