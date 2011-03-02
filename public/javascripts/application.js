@@ -38,6 +38,8 @@ function updateMessages(){
         }
 
   
+        alert(id_thistime);
+        alert(lastid);
         if (id_thistime != lastid) //最后一句话变了
         {
           //得到目前昵称
