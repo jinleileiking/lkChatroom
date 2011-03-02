@@ -19,8 +19,8 @@ function updateMessages(){
 
   $.ajax({
       type : "GET",
-      //url : "http://chatroom.heroku.com/messages.json",
-      url : "http://localhost:3000/messages.json",
+      url : "http://chatroom.heroku.com/messages.json",
+      //url : "http://localhost:3000/messages.json",
       dataType : "json",
       complete : function(data){
         var id_thistime = 1; //这次的最后一个ID
