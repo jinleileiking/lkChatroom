@@ -7,7 +7,7 @@
 //setTimeout('updateMsg',4000);
 //};
 
-//lastid = 2;
+lastid = 2;
 
 function safe(s)
 {
@@ -23,7 +23,7 @@ function updateMessages(){
       //url : "http://localhost:3000/messages.json",
       dataType : "json",
       complete : function(data){
-        var id_thistime = 1; //这次的最后一个ID
+        var id_thistime; //这次的最后一个ID
         var str = "var ret = " + data.responseText + ";"; 
         eval(str);
         var toAdd = "";
@@ -32,18 +32,19 @@ function updateMessages(){
 
         for(var i = 0; i < ret.length; i++)
         {
-          alert(ret[i]._id.$oid);
+          //alert(ret[i]._id.$oid);
           if (i == ret.length -1) //最后一句话
           {
-            id_thistime = ret[i]._id.$oid; 
-            alert(id_thistime);
+            //id_thistime = ret[i]._id.$oid; 
+            id_thistime = ret[i]._id;
+            //alert(id_thistime);
           }
         }
         
-        alert(id_thistime);
-        alert($.cookie('last_id'));
-        //if (id_thistime != lastid) //最后一句话变了
-        if (id_thistime != $.cookie('last_id')) //最后一句话变了
+        //alert(id_thistime);
+        //alert($.cookie('last_id'));
+        if (id_thistime != lastid) //最后一句话变了
+        //if (id_thistime != $.cookie('last_id')) //最后一句话变了
         {
           //得到目前昵称
           var current_nickname = $('form').html();
@@ -57,8 +58,8 @@ function updateMessages(){
             $("#messages").append(toAdd);
           }
 
-
-          $.cookie('last_id', id_thistime);
+          lastid = id_thistime;
+          //$.cookie('last_id', id_thistime);
           $('.scroll-pane').jScrollPane();
           var pane = $('.scroll-pane');
           var api = pane.data('jsp');
