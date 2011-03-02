@@ -28,10 +28,11 @@ function updateMessages(){
         eval(str);
         var toAdd = "";
 
-        alert(str);
+        //alert(str);
 
         for(var i = 0; i < ret.length; i++)
         {
+          alert(ret[i]._id.$oid);
           if (i == ret.length -1) //最后一句话
           {
             id_thistime = ret[i]._id.$oid; 
