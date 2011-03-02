@@ -35,7 +35,9 @@ function updateMessages(){
           //alert(ret[i]._id.$oid);
           if (i == ret.length -1) //最后一句话
           {
+            //pc部署有$oid
             //id_thistime = ret[i]._id.$oid; 
+            //heroku 无$oid
             id_thistime = ret[i]._id;
             //alert(id_thistime);
           }
