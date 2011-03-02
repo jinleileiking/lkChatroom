@@ -34,6 +34,7 @@ function updateMessages(){
           if (i == ret.length -1) //最后一句话
           {
             id_thistime = ret[i]._id.$oid; 
+            alert(id_thistime);
           }
         }
         
