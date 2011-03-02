@@ -24,7 +24,7 @@ function updateMessages(){
       dataType : "json",
       complete : function(data){
         str = "var ret = " + data.responseText + ";"; 
-        eval(str);
+        eval(str)
         var toAdd = "";
 
 
