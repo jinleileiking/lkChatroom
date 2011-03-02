@@ -25,7 +25,7 @@ function updateMessages(){
       complete : function(data){
         str = "var ret = " + data.responseText; 
         //str = "var ret = " + data.responseText + ";"; 
-        eval(str)
+        eval(str);
         var toAdd = "";
 
 
