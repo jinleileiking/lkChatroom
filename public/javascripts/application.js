@@ -7,7 +7,7 @@
 //setTimeout('updateMsg',4000);
 //};
 
-lastid = 2;
+//lastid = 2;
 
 function safe(s)
 {
@@ -17,14 +17,14 @@ function safe(s)
 
 function updateMessages(){
 
-  id_thistime = 1; //这次的最后一个ID
   $.ajax({
       type : "GET",
-      url : "http://chatroom.heroku.com/messages.json",
+      //url : "http://chatroom.heroku.com/messages.json",
+      url : "http://localhost:3000/messages.json",
       dataType : "json",
       complete : function(data){
-        //str = "var ret = " + data.responseText; 
-        str = "var ret = " + data.responseText + ";"; 
+        var id_thistime = 1; //这次的最后一个ID
+        var str = "var ret = " + data.responseText + ";"; 
         eval(str);
         var toAdd = "";
 
@@ -36,11 +36,11 @@ function updateMessages(){
             id_thistime = ret[i]._id.$oid; 
           }
         }
-
-  
+        
         alert(id_thistime);
-        alert(lastid);
-        if (id_thistime != lastid) //最后一句话变了
+        alert($.cookie('last_id'));
+        //if (id_thistime != lastid) //最后一句话变了
+        if (id_thistime != $.cookie('last_id')) //最后一句话变了
         {
           //得到目前昵称
           var current_nickname = $('form').html();
@@ -55,7 +55,7 @@ function updateMessages(){
           }
 
 
-          lastid = id_thistime;
+          $.cookie('last_id', id_thistime);
           $('.scroll-pane').jScrollPane();
           var pane = $('.scroll-pane');
           var api = pane.data('jsp');

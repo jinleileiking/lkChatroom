@@ -50,7 +50,7 @@ module Chatroom
     config.i18n.default_locale = 'zh-CN'
     # JavaScript files you want as :defaults (application.js is always included).
     # config.action_view.javascript_expansions[:defaults] = %w(jquery rails)
-    config.action_view.javascript_expansions[:defaults] = %w(jquery rails jquery.timers-1.2 jquery.tmpl jquery.mousewheel jquery.jscrollpane.min)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery rails jquery.timers-1.2 jquery.tmpl jquery.mousewheel jquery.jscrollpane.min jquery.cookie)
     config.generators do |g|
       g.orm             :mongoid
       g.template_engine :haml
